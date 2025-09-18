@@ -9,18 +9,17 @@ Este repositorio de ejemplo muestra una aplicación **Modelo-Vista-Controlador (
 
 ## 📂 Estructura del proyecto
 
-mvc_python_oracle/
-├── app.py # Controller (rutas Flask)
-├── models.py # Modelo (acceso a Oracle)
-├── config.py # Configuración (DSN, credenciales)
-├── requirements.txt
-├── templates/
-│ ├── base.html
-│ ├── index.html
-│ ├── create.html
-│ └── edit.html
-└── static/ # (opcional: css/js)
-
+- mvc_python_oracle/
+  - **app.py** → Controller (rutas Flask)
+  - **models.py** → Modelo (acceso a Oracle)
+  - **config.py** → Configuración (DSN, credenciales)
+  - **requirements.txt**
+  - **templates/**
+    - base.html
+    - index.html
+    - create.html
+    - edit.html
+  - **static/** → (opcional: css/js)
 
 
 ---
