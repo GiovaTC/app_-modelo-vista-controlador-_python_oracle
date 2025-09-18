@@ -3,6 +3,7 @@
 # Aplicación MVC en Python conectada a Oracle .
 
 <img width="2554" height="1079" alt="image" src="https://github.com/user-attachments/assets/164d15c0-444d-4b5f-98b8-ce431eb5943d" />
+<img width="2550" height="1079" alt="image" src="https://github.com/user-attachments/assets/25d86245-6c6a-4724-8bb2-72d8d6170be3" />
 
 Este repositorio de ejemplo muestra una aplicación **Modelo-Vista-Controlador (MVC)** en **Python** usando **Flask** como framework web y **oracledb** 
 ( la librería oficial que reemplaza a `cx_Oracle`) para conectarse a una base de datos **Oracle** .
