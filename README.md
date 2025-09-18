@@ -1,5 +1,7 @@
 # app_-modelo-vista-controlador-_python_oracle .
 
+<img width="203" height="193" alt="image" src="https://github.com/user-attachments/assets/acd0ce8a-579d-497b-a76e-797430d0bb13" />
+
 # Aplicación MVC en Python conectada a Oracle .
 
 <img width="2553" height="1079" alt="image" src="https://github.com/user-attachments/assets/70c1a452-c2d5-4c96-ae83-b97cf43540bb" />
