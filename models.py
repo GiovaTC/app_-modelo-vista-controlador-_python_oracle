@@ -13,8 +13,7 @@ def get_pool():
             dsn=ORACLE_DSN,
             min=POOL_MIN,
             max=POOL_MAX,
-            increment=POOL_INC,
-            encoding='UTF-8'
+            increment=POOL_INC
         )
     return _pool
 
@@ -24,7 +23,7 @@ def list_pacientes():
     pool = get_pool()
     with pool.acquire() as conn:
         with conn.cursor() as cur:
-            cur.execute("SELECT ID, NOMBRE, APELLIDO, EDAD, TELEFONO, CORREO FROM PACIENTES ORDER BY ID")
+            cur.execute("SELECT ID, NOMBRE, APELLIDO, EDAD, TELEFONO, CORREO FROM PACIENTESMVC ORDER BY ID")
             cols = [d[0].lower() for d in cur.description]
             rows = [dict(zip(cols, r)) for r in cur.fetchall()]
             return rows
@@ -33,7 +32,7 @@ def get_paciente(p_id):
     pool = get_pool()
     with pool.acquire() as conn:
         with conn.cursor() as cur:
-            cur.execute("SELECT ID, NOMBRE, APELLIDO, EDAD, TELEFONO, CORREO FROM PACIENTES WHERE ID = :id", [p_id])
+            cur.execute("SELECT ID, NOMBRE, APELLIDO, EDAD, TELEFONO, CORREO FROM PACIENTESMVC WHERE ID = :id", [p_id])
             row = cur.fetchone()
             if not row:
                 return None
@@ -45,7 +44,7 @@ def create_paciente(data):
     with pool.acquire() as conn:
         with conn.cursor() as cur:
             cur.execute(
-                "INSERT INTO PACIENTES (NOMBRE, APELLIDO, EDAD, TELEFONO, CORREO) VALUES (:1, :2, :3, :4, :5)",
+                "INSERT INTO PACIENTESMVC (NOMBRE, APELLIDO, EDAD, TELEFONO, CORREO) VALUES (:1, :2, :3, :4, :5)",
                 (data.get('nombre'), data.get('apellido'), data.get('edad'),
                  data.get('telefono'), data.get('correo'))
             )
@@ -56,7 +55,7 @@ def update_paciente(p_id, data):
     with pool.acquire() as conn:
         with conn.cursor() as cur:
             cur.execute(
-                "UPDATE PACIENTES SET NOMBRE=:1, APELLIDO=:2, EDAD=:3, TELEFONO=:4, CORREO=:5 WHERE ID=:6",
+                "UPDATE PACIENTESMVC SET NOMBRE=:1, APELLIDO=:2, EDAD=:3, TELEFONO=:4, CORREO=:5 WHERE ID=:6",
                 (data.get('nombre'), data.get('apellido'), data.get('edad'),
                  data.get('telefono'), data.get('correo'), p_id)
             )
@@ -66,5 +65,5 @@ def delete_paciente(p_id):
     pool = get_pool()
     with pool.acquire() as conn:
         with conn.cursor() as cur:
-            cur.execute("DELETE FROM PACIENTES WHERE ID = :id", [p_id])
+            cur.execute("DELETE FROM PACIENTESMVC WHERE ID = :id", [p_id])
         conn.commit()
