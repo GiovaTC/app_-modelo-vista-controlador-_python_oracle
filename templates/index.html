@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<a class="btn btn-primary mb-3" href="{{ url_for('nuevo_paciente') }}"> nuevo paciente </a>
+<table class="table table-striped">
+    <thead>
+        <tr><th>id</th><th>nombre</th><th>apellido</th><th>edad</th><th>telefono</th><th>correo</th><th>acciones</th></tr>   
+    </thead>
+<tbody>
+    {% for p in pacientes %}
+    <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.nombre }}</td>
+        <td>{{ p.apellido }}</td>
+        <td>{{ p.edad }}</td>
+        <td>{{ p.telefono }}</td>
+        <td>{{ p.correo }}</td>
+        <td>
+            <a class="btn btn-sm btn-secondary" href="{{ url_for('editar_paciente', p_id=p.id) }}">editar</a>
+            <form method="post" action="{{ url_for('eliminar_paciente', p_id=p.id ) }}" style="display: inline;" onsubmit="return confirm('eliminar?')">
+                <button class="btn btn-sm btn-danger">eliminar</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</tbody>
+<table>
+{% endblock %}
